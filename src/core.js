@@ -575,16 +575,21 @@ jStat.diagonal = function diagonal(diagArray) {
 };
 
 
-// return copy of A
+
+// return copy of A                                                      
 jStat.copy = function copy(A) {
-  return A.map(function(row) {
-    if (isNumber(row))
+  return A.map(function(row) {        
+    if (isNumber(row))                    
+      return row;       
+    try {                    
+      return row.map(function(t) {              
+        return t;                                                            
+      });            
+    } catch(e) {                      
       return row;
-    return row.map(function(t) {
-      return t;
-    });
-  });
-};
+    };                                                
+  });                                            
+};              
 
 
 // TODO: Go over this entire implementation. Seems a tragic waste of resources
