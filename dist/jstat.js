@@ -589,9 +589,13 @@ jStat.copy = function copy(A) {
   return A.map(function(row) {
     if (isNumber(row))
       return row;
-    return row.map(function(t) {
-      return t;
-    });
+    try {
+      return row.map(function(t) {
+        return t;
+      });
+    } catch(e) {
+      return row;
+    };
   });
 };
 
